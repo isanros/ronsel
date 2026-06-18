@@ -1,0 +1,370 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0b1020;
+  color: #f8fafc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.35), transparent 28rem),
+    linear-gradient(135deg, #0b1020 0%, #111827 52%, #1f2937 100%);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 1rem;
+  padding: 1rem 1.15rem;
+  min-height: 3.25rem;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.16);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.primary {
+  background: #16a34a;
+}
+
+.warning {
+  background: #f59e0b;
+}
+
+.danger {
+  background: #dc2626;
+}
+
+.secondary {
+  background: #2563eb;
+}
+
+.ghost {
+  background: rgba(148, 163, 184, 0.18);
+  border: 1px solid rgba(226, 232, 240, 0.2);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.app-shell {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: max(1rem, env(safe-area-inset-top)) 1rem max(1.25rem, env(safe-area-inset-bottom));
+}
+
+.hero {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  align-items: end;
+  padding: 1.5rem 0;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: #93c5fd;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0.8rem;
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.install-note {
+  margin: 0;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  border: 1px solid rgba(226, 232, 240, 0.18);
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  background: rgba(15, 23, 42, 0.72);
+  color: #dbeafe;
+  font-weight: 800;
+}
+
+.status-pill::before {
+  content: '';
+  width: 0.65rem;
+  height: 0.65rem;
+  margin-right: 0.5rem;
+  border-radius: 999px;
+  background: #94a3b8;
+}
+
+.status-pill[data-status='recording']::before {
+  background: #22c55e;
+  box-shadow: 0 0 0 0.35rem rgba(34, 197, 94, 0.18);
+}
+
+.status-pill[data-status='paused']::before {
+  background: #f59e0b;
+}
+
+.status-pill[data-status='finished']::before {
+  background: #60a5fa;
+}
+
+.panel {
+  margin-bottom: 1rem;
+  border: 1px solid rgba(226, 232, 240, 0.15);
+  border-radius: 1.5rem;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.72);
+  box-shadow: 0 1.25rem 4rem rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(18px);
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: #cbd5e1;
+  font-weight: 800;
+}
+
+.field input {
+  width: 100%;
+  border: 1px solid rgba(226, 232, 240, 0.18);
+  border-radius: 1rem;
+  padding: 0.95rem 1rem;
+  background: rgba(15, 23, 42, 0.75);
+  color: #f8fafc;
+}
+
+.stats-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.stat-card {
+  border: 1px solid rgba(226, 232, 240, 0.12);
+  border-radius: 1.1rem;
+  padding: 1rem;
+  background: rgba(30, 41, 59, 0.58);
+}
+
+.stat-card span {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #94a3b8;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: clamp(1.2rem, 8vw, 2rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.primary-stat {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(22, 163, 74, 0.8));
+}
+
+.primary-stat span {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.primary-stat strong {
+  font-size: clamp(2.8rem, 18vw, 6rem);
+}
+
+.actions {
+  position: sticky;
+  bottom: max(0.75rem, env(safe-area-inset-bottom));
+  z-index: 5;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(226, 232, 240, 0.14);
+  border-radius: 1.25rem;
+  background: rgba(2, 6, 23, 0.78);
+  backdrop-filter: blur(18px);
+}
+
+.actions button:first-child {
+  grid-column: 1 / -1;
+}
+
+.toggle {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1rem;
+  color: #dbeafe;
+  font-weight: 700;
+}
+
+.toggle input {
+  width: 1.3rem;
+  height: 1.3rem;
+  accent-color: #22c55e;
+}
+
+.error {
+  margin: 1rem 0 0;
+  border: 1px solid rgba(248, 113, 113, 0.45);
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  background: rgba(127, 29, 29, 0.42);
+  color: #fecaca;
+  font-weight: 700;
+}
+
+.gps-note,
+.empty,
+footer p {
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.gps-note {
+  margin: 1rem 0 0;
+}
+
+.two-column {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border-bottom: 1px solid rgba(226, 232, 240, 0.12);
+  padding: 0.85rem 0.35rem;
+  text-align: left;
+}
+
+th {
+  color: #93c5fd;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.segments-list {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.segments-list li {
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid rgba(226, 232, 240, 0.12);
+  border-radius: 1rem;
+  padding: 0.9rem;
+  background: rgba(30, 41, 59, 0.58);
+}
+
+.segments-list li > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: space-between;
+}
+
+.segments-list span {
+  color: #cbd5e1;
+}
+
+.active-segment {
+  border-color: rgba(34, 197, 94, 0.5) !important;
+  box-shadow: inset 0 0 0 1px rgba(34, 197, 94, 0.25);
+}
+
+footer {
+  padding: 0.5rem 0 1rem;
+}
+
+@media (min-width: 760px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.7fr);
+  }
+
+  .panel {
+    padding: 1.25rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .primary-stat {
+    grid-column: span 2;
+  }
+
+  .actions {
+    position: static;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .actions button:first-child {
+    grid-column: auto;
+  }
+
+  .two-column {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
