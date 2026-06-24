@@ -3,11 +3,16 @@ import { haversineDistanceM, positionToTrackPoint } from './geo';
 import { createId } from './id';
 
 export const DEFAULT_TRACKER_SETTINGS: TrackerSettings = {
-  minAccuracyM: 50,
-  minDistanceM: 4,
+  // Aceptamos lecturas algo menos precisas: en ciudad los edificios degradan
+  // la precisión y con 50 m descartábamos puntos válidos.
+  minAccuracyM: 65,
+  // Distancia mínima entre puntos más baja para no recortar esquinas ni curvas.
+  minDistanceM: 2,
   maxSpeedMps: 12,
   announceEveryKm: true,
-  jitterAccuracyFactor: 0.5
+  // Margen anti-deriva más suave (antes 0.5). Reduce el descarte de puntos
+  // buenos cuando la precisión reportada es alta numéricamente.
+  jitterAccuracyFactor: 0.25
 };
 
 export function createEmptyActivity(): Activity {
