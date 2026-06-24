@@ -6,7 +6,8 @@ export const DEFAULT_TRACKER_SETTINGS: TrackerSettings = {
   minAccuracyM: 50,
   minDistanceM: 4,
   maxSpeedMps: 12,
-  announceEveryKm: true
+  announceEveryKm: true,
+  jitterAccuracyFactor: 0.5
 };
 
 export function createEmptyActivity(): Activity {
@@ -206,7 +207,16 @@ export function appendPosition(activity: Activity, position: GeolocationPosition
     const deltaSeconds = Math.max(0.001, (positionTimestamp - lastTimeMs) / 1000);
     const inferredSpeedMps = deltaM / deltaSeconds;
 
-    if (deltaM < settings.minDistanceM) {
+    // Umbral dinámico: combinamos la distancia mínima fija con un margen
+    // proporcional a la precisión reportada por el GPS. Así evitamos acumular
+    // "deriva" (movimiento falso) cuando la señal es mala o estás parado, lo
+    // que produce un trazado más limpio y distancias más fiables.
+    const jitterThresholdM = Number.isFinite(accuracy)
+      ? accuracy * settings.jitterAccuracyFactor
+      : 0;
+    const requiredDistanceM = Math.max(settings.minDistanceM, jitterThresholdM);
+
+    if (deltaM < requiredDistanceM) {
       return activity;
     }
 

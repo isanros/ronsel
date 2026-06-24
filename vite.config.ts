@@ -3,38 +3,47 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-  base: "/runwalk-pwa-react/",
+  base: "/ronsel/",
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
+      includeAssets: ['icons/favicon.ico', 'icons/apple-touch-icon.png', 'icons/favicon-16x16.png', 'icons/favicon-32x32.png', 'icons/favicon-48x48.png'],
       manifest: {
-        name: 'RunWalk GPS Tracker',
-        short_name: 'RunWalk',
-        description: 'PWA para correr o caminar con GPS, parciales, segmentos y exportación GPX.',
-        theme_color: '#111827',
-        background_color: '#111827',
+        name: 'Ronsel · GPS Tracker',
+        short_name: 'Ronsel',
+        description: 'Ronsel (estela en gallego): PWA para correr o caminar con GPS, parciales, segmentos, mapa y exportación GPX.',
+        theme_color: '#020d1c',
+        background_color: '#020d1c',
         display: 'standalone',
-        scope: '/',
-        start_url: '/',
+        scope: '/ronsel/',
+        start_url: '/ronsel/',
+        id: '/ronsel/',
         orientation: 'portrait',
         icons: [
           {
-            src: '/pwa-192x192.png',
+            src: 'icons/icon-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any'
           },
           {
-            src: '/pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
-          },
-          {
-            src: '/maskable-icon-512x512.png',
+            src: 'icons/icon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'any maskable'
+            purpose: 'any'
+          },
+          {
+            src: 'icons/maskable-icon-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: 'icons/maskable-icon-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
           }
         ]
       },

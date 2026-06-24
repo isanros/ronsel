@@ -47,4 +47,11 @@ export interface TrackerSettings {
   minDistanceM: number;
   maxSpeedMps: number;
   announceEveryKm: boolean;
+  /**
+   * Factor aplicado a la precisión (en metros) del punto para descartar el
+   * "ruido" del GPS cuando estás parado o te mueves muy despacio. Un valor de
+   * 0.5 exige que el desplazamiento supere la mitad del margen de error antes
+   * de registrarse como movimiento real.
+   */
+  jitterAccuracyFactor: number;
 }

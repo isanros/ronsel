@@ -1,6 +1,6 @@
-# RunWalk PWA React
+# Ronsel PWA
 
-MVP de una PWA instalable para correr/caminar con:
+**Ronsel** (en gallego, la *estela* que dejas al moverte) es una PWA instalable para correr/caminar con:
 
 - Tracking GPS con `navigator.geolocation.watchPosition`.
 - Botones para iniciar actividad, parar/reanudar segmentos y finalizar.
@@ -8,6 +8,7 @@ MVP de una PWA instalable para correr/caminar con:
 - Parciales automáticos cada 1 km.
 - Avisos por voz al completar cada km, si el navegador lo permite.
 - Exportación GPX 1.1 con un `<trkseg>` por segmento activo.
+- Importación de archivos GPX y visualización del recorrido sobre un mapa.
 - Persistencia local con IndexedDB.
 - Migración automática desde la versión anterior basada en `localStorage`.
 

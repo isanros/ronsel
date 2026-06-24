@@ -118,9 +118,11 @@ export function useActivityTracker() {
       },
       (geoError) => setError(geolocationErrorMessage(geoError)),
       {
+        // Forzamos al chip GPS a entregar siempre la lectura más reciente posible
+        // (maximumAge: 0) en lugar de reutilizar una posición cacheada
         enableHighAccuracy: true,
-        maximumAge: 1000,
-        timeout: 15000
+        maximumAge: 0,
+        timeout: 27000
       }
     );
 
